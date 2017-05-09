@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.0.1)
+  - Kingfisher (3.2.1)
+  - SnapKit (3.2.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0.1)
+  - Kingfisher (~> 3.2.1)
+  - SnapKit (~> 3.2.0)
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 619fba2d551b678aa0b6ceff1c863677f0eb7ff7
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Kingfisher: 64ef28c6d3d6f344e3ae2d7f5c9da80439505d99
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+
+PODFILE CHECKSUM: 276a27d363310bad4819a247d8739cb626d9a7a9
+
+COCOAPODS: 1.2.0

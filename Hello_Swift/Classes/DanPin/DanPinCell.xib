@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DanPinCell" customModule="Hello_Swift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="151" height="180"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="151" height="180"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="place" translatesAutoresizingMaskIntoConstraints="NO" id="BWM-qP-jjJ">
+                        <rect key="frame" x="8" y="8" width="135" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="128" id="VUr-OH-E9B"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉红浮雕餐盘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbo-6b-MID">
+                        <rect key="frame" x="8" y="140" width="135" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="dYH-w8-nXA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zbo-6b-MID" secondAttribute="trailing" constant="8" id="0fq-ex-Q5G"/>
+                <constraint firstItem="BWM-qP-jjJ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="CIi-gL-R4C"/>
+                <constraint firstAttribute="trailing" secondItem="BWM-qP-jjJ" secondAttribute="trailing" constant="8" id="DfG-ul-4gp"/>
+                <constraint firstItem="Zbo-6b-MID" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="WdF-hG-TX9"/>
+                <constraint firstItem="BWM-qP-jjJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="X2w-By-if6"/>
+                <constraint firstItem="Zbo-6b-MID" firstAttribute="top" secondItem="BWM-qP-jjJ" secondAttribute="bottom" constant="4" id="r1j-ja-tAe"/>
+            </constraints>
+            <size key="customSize" width="151" height="180"/>
+            <connections>
+                <outlet property="img" destination="BWM-qP-jjJ" id="Qij-Xj-VAA"/>
+                <outlet property="name" destination="Zbo-6b-MID" id="Vmb-L2-Rd2"/>
+            </connections>
+            <point key="canvasLocation" x="-122.5" y="-47"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="place" width="720" height="329"/>
+    </resources>
+</document>
