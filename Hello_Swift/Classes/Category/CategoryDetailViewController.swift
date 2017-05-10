@@ -26,8 +26,8 @@ class CategoryDetailViewController: BaseViewController,UITableViewDataSource,UIT
         requestFLDetailData()
     }
     func initUI() {
-        automaticallyAdjustsScrollViewInsets = false
-        let CTable = UITableView(frame:CGRect(x:0, y:20, width:view.frame.size.width,height: view.frame.size.height-20),style:UITableViewStyle.grouped)
+        //automaticallyAdjustsScrollViewInsets = false
+        let CTable = UITableView(frame:view.bounds,style:UITableViewStyle.grouped)
         CTable.backgroundColor = UIColor.white
         CTable.separatorStyle = UITableViewCellSeparatorStyle.none
         CTable.dataSource = self

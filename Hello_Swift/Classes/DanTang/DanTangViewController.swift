@@ -36,8 +36,7 @@ class DanTangViewController: BaseViewController,UITableViewDataSource,UITableVie
         requestHomeData()
         
         header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
-        
-        self.DTTable.tableHeaderView = header
+        self.DTTable.mj_header = header
         
         footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
         self.DTTable.tableFooterView = footer
@@ -68,8 +67,8 @@ class DanTangViewController: BaseViewController,UITableViewDataSource,UITableVie
         self.navigationController!.pushViewController(detail, animated: true)
     }
     func initUI()  {
-        automaticallyAdjustsScrollViewInsets = false
-        let DTTable = UITableView(frame:CGRect(x:0, y:64, width:view.frame.size.width,height: view.frame.size.height-64-15),style:UITableViewStyle.grouped)
+        //automaticallyAdjustsScrollViewInsets = false
+        let DTTable = UITableView(frame:view.bounds,style:UITableViewStyle.grouped)
         DTTable.backgroundColor = UIColor.white
         DTTable.separatorStyle = UITableViewCellSeparatorStyle.none
         DTTable.dataSource = self
@@ -78,6 +77,8 @@ class DanTangViewController: BaseViewController,UITableViewDataSource,UITableVie
         let nib = UINib(nibName:"DanTangCell",bundle:nil)
         DTTable.register(nib, forCellReuseIdentifier: cellID)
         self.DTTable = DTTable
+        
+        //self.DTTable.sectionHeaderHeight = 10
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count

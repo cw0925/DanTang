@@ -16,6 +16,10 @@ class DanPinViewController: BaseViewController,UICollectionViewDataSource,UIColl
     var collection: UICollectionView?
     var items = [DPModel]()
     
+    // 顶部刷新
+    let header = MJRefreshNormalHeader()
+    // 底部刷新
+    let footer = MJRefreshAutoNormalFooter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,22 @@ class DanPinViewController: BaseViewController,UICollectionViewDataSource,UIColl
         view.addSubview(collection)
         collection.register(UINib(nibName:"DanPinCell",bundle:nil), forCellWithReuseIdentifier: collectionID)
         self.collection = collection
+        
+        header.setRefreshingTarget(self, refreshingAction: #selector(headerRefresh))
+        self.collection?.mj_header = header
+        
+        footer.setRefreshingTarget(self, refreshingAction: #selector(footerRefresh))
+        self.collection?.mj_footer = footer
+    }
+    // 顶部刷新
+    func headerRefresh(){
+        print("下拉刷新")
+    }
+    
+    // 底部刷新
+    var index = 0
+    func footerRefresh(){
+        print("上拉刷新")
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

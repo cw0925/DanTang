@@ -17,8 +17,12 @@ class ScrollDetailViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         setupNavigation(title: (item?.title)!, leftTitle: "返回")
+        initUI()
         requestScrollDetailData(type: (item?.ID)!)
 }
+    func initUI() {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
