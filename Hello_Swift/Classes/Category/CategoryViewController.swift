@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let FLCellID = "FLCell"
 
-class CategoryViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class CategoryViewController: BaseViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
 
     var collection:UICollectionView?
     var items = [AnyObject]()
@@ -25,9 +25,9 @@ class CategoryViewController: BaseViewController,UICollectionViewDelegate,UIColl
         requestCategoryData()
     }
     func initUI() {
-        self.automaticallyAdjustsScrollViewInsets = false
+        //view.backgroundColor = RGBColor(r: 240, g: 240, b: 240, a: 1)
         let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame:CGRect(x:0,y:64,width:SCREENW,height:SCREENH-64-58), collectionViewLayout:layout)
+        let collection = UICollectionView(frame:view.bounds, collectionViewLayout:layout)
         layout.itemSize = CGSize(width:(SCREENW-20) / 4,height:(SCREENW-20) / 4+30)
         collection.backgroundColor = UIColor.white
         collection.delegate = self
@@ -35,7 +35,8 @@ class CategoryViewController: BaseViewController,UICollectionViewDelegate,UIColl
         view.addSubview(collection)
         collection.register(UINib(nibName:"CategoryCell",bundle:nil), forCellWithReuseIdentifier: FLCellID)
         //注册一个headView
-        collection .register(HeadView.self, forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier: "head")
+//        collection .register(HeadView.classForCoder(), forSupplementaryViewOfKind:UICollectionElementKindSectionHeader, withReuseIdentifier: "head")
+        collection.register(UINib(nibName:"HeadView",bundle:nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "head")
         self.collection = collection
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -46,6 +47,7 @@ class CategoryViewController: BaseViewController,UICollectionViewDelegate,UIColl
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FLCellID, for: indexPath) as! CategoryCell
+        cell.backgroundColor = UIColor.white
         let  modelArr = items[indexPath.section] as! [FLModel]
         let model  =  modelArr[indexPath.item]
         cell.categoryItem = model
@@ -53,13 +55,13 @@ class CategoryViewController: BaseViewController,UICollectionViewDelegate,UIColl
         return cell
     }
     //返回cell 上下左右的间距
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(5, 10, 5, 10)
     }
     //返回HeadView的宽高
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize{
         
-        return CGSize(width: SCREENW, height:100)
+        return CGSize(width: SCREENW, height:50)
     }
     //返回自定义HeadView或者FootView，我这里以headview为例
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{

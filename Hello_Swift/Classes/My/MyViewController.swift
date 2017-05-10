@@ -11,7 +11,10 @@ import UIKit
 class MyViewController: BaseViewController {
 
     var headView = UIView()
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +23,6 @@ class MyViewController: BaseViewController {
         customNavigation()
     }
     func customNavigation() {
-        self.navigationController?.navigationBar.isHidden = true
-
         let leftBtn = UIButton.init(type:.custom)
         leftBtn.frame = CGRect(x: 20, y:30, width: 25, height: 25)
         leftBtn.setImage(UIImage.init(named: "Me_message_20x20_"), for: .normal)
@@ -39,7 +40,9 @@ class MyViewController: BaseViewController {
         
     }
     func rightItemClick() {
-        
+        let settingVC = SettingViewController()
+        settingVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(settingVC, animated: true)
     }
     func initUI() {
         headView = UIView.init(frame: CGRect(x: 0, y:0, width: SCREENW, height: 250))

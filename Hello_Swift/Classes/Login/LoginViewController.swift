@@ -25,12 +25,18 @@ class LoginViewController: BaseViewController {
         let rightBtn = UIButton.init(type: .custom)
         rightBtn.frame = CGRect(x:0,y:0,width:40,height:30)
         rightBtn.setTitle("注册", for: .normal)
+        rightBtn.addTarget(self, action: #selector(rightBarClick(sender:)), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightBtn)
     }
     override func tapClick(sender: UIButton) {
         self.dismiss(animated: true) { 
             
         }
+    }
+    func rightBarClick(sender:UIButton) {
+        let registVC = RegistViewController()
+        self.navigationController?.pushViewController(registVC, animated: true)
+        
     }
     func initUI() {
         view.backgroundColor = RGBColor(r: 240, g: 240, b: 240, a: 1)

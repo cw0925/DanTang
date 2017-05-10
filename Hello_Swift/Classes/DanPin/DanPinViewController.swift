@@ -11,7 +11,7 @@ import SwiftyJSON
 
 let  collectionID = "collectionCell"
 
-class DanPinViewController: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate {
+class DanPinViewController: BaseViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     var collection: UICollectionView?
     var items = [DPModel]()
@@ -25,11 +25,11 @@ class DanPinViewController: BaseViewController,UICollectionViewDataSource,UIColl
         requestDanPinData()
     }
     func initUI() {
-        automaticallyAdjustsScrollViewInsets = false
+        //automaticallyAdjustsScrollViewInsets = false
         
         let layout = UICollectionViewFlowLayout()
-        let collection = UICollectionView(frame:CGRect(x:0,y:64,width:SCREENW,height:SCREENH-64-58), collectionViewLayout:layout)
-        layout.itemSize = CGSize(width:(SCREENW-30) / 2,height:165)
+        let collection = UICollectionView(frame:view.bounds, collectionViewLayout:layout)
+        layout.itemSize = CGSize(width:(SCREENW-20) / 2,height:165)
         collection.backgroundColor = UIColor.white
         collection.delegate = self
         collection.dataSource = self
@@ -48,9 +48,9 @@ class DanPinViewController: BaseViewController,UICollectionViewDataSource,UIColl
         cell.dpItem = self.items[indexPath.item]
         return cell
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(10, 20, 10, 20)
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(5, 5, 5, 5)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detail = DPDViewController()

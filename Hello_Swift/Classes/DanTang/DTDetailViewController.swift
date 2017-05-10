@@ -9,16 +9,20 @@
 import UIKit
 import WebKit
 
-class DTDetailViewController: BaseViewController,WKUIDelegate {
+class DTDetailViewController: BaseViewController,WKUIDelegate ,WKNavigationDelegate{
 
     var homeItem:HomeModel?
-    
+     weak var loadingView:LoadingView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         super.setupNavigation(title: "攻略详情", leftTitle: "返回")
         initUI()
+        
+        let loadingView = LoadingView.showLoadingWith(view: view)
+        self.loadingView = loadingView
+        self.loadingView.backgroundColor = UIColor.clear
     }
     func initUI() {
         let web = WKWebView(frame:self.view.frame)
@@ -27,8 +31,13 @@ class DTDetailViewController: BaseViewController,WKUIDelegate {
         web.load(request as URLRequest)
         web.isUserInteractionEnabled = true
         web.uiDelegate = self
+        web.navigationDelegate = self
         self.view.addSubview(web)
         
+    }
+    // 加载完成的代理方法
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.loadingView.hideLoadingView()
     }
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView?{
         if navigationAction.targetFrame == nil {
